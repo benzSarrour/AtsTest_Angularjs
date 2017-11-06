@@ -1,0 +1,8 @@
+th {
+    text-align: center !important;
+    padding: 10px 10px;
+}
+#categorie {
+    width: 250px;
+    display: inline-block;
+}

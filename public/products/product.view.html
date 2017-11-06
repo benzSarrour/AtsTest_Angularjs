@@ -1,0 +1,51 @@
+
+<div>
+    <h1>ATS Product List</h1>
+    <div class="text-center">
+        <label>Category</label>
+        <select class="form-control" id="categorie" ng-model="search.category" ng-change="productsByCategory()">
+            <option ng-repeat="category in categories" value="{{category}}">{{category}}</option>
+        </select>
+    </div>
+    <br>
+    <br>
+    <br>
+    <table class="table table-hover table-bordered">
+        <thead>
+        <th>productName</th>
+        <th>basePrice</th>
+        <th>category</th>
+        <th>brand</th>
+        <th>productMaterial</th>
+        <th>imageUrl</th>
+        <th>delivery</th>
+        <th>details</th>
+        <th>reviews</th>
+        </thead>
+        <tbody>
+        <tr ng-repeat="product in pagedItems" >
+            <td> {{product.productName}}</td>
+            <td> {{product.basePrice}}</td>
+            <td> {{product.category}}</td>
+            <td> {{product.brand}}</td>
+            <td> {{product.productMaterial}}</td>
+            <td><img width="200" height="100" src="{{product.imageUrl}}"></td>
+            <td> {{product.delivery}}</td>
+            <td> {{product.details}}</td>
+            <td>
+                <ul ng-repeat="review in product.reviews">
+                    <li>{{review.rating}} | {{review.content}}</li>
+                </ul>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <!-- pager -->
+    <div class="text-center">
+        <ul ng-if="pager.pages && pager.pages.length" class="pagination ">
+            <li class="page-item" ng-repeat="page in pager.pages" ng-class="{'active':pager.currentPage === page}">
+                <a class="page-link" ng-click="setPage(page)">{{page}}</a>
+            </li>
+        </ul>
+    </div>
+</div>
